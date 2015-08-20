@@ -2,7 +2,7 @@ module WarmupWeekend
 	class Window < Gosu::Window
 		def initialize
 			super(SCREEN_WIDTH, SCREEN_HEIGHT, false)
-			self.caption = "Hello world"
+			self.caption = "Hello World"
 
 			@font = Gosu::Font.new(self, Gosu::default_font_name, 20)
 
@@ -11,6 +11,10 @@ module WarmupWeekend
 
 			@music = Gosu::Sample.new("assets/good_song.mp3")
 			@music.play
+
+			@weed = Gosu::Image.new("assets/weed.png")
+			@weed_x = SCREEN_WIDTH
+			@weed_y = SCREEN_HEIGHT
 		end
 
 		def update
@@ -27,10 +31,24 @@ module WarmupWeekend
 			else
 				@rob_y = -30
 			end
+
+			if @weed_x > 0
+				@weed_x -= 1
+			else
+				@weed_x = SCREEN_WIDTH
+			end
+
+			if @weed_y > 0
+				@weed_y -= 1
+			else
+				@weed_y = SCREEN_HEIGHT
+			end
 		end
 
 		def draw
-			@font.draw("HELLO ROB ;)", @rob_x, @rob_y, 0, 1.0, 10.0, 0xffffff00)
+			@weed.draw_rot(@weed_x, @weed_y, 1, 1.0)
+
+			@font.draw("HELLO ROB ;)", @rob_x, @rob_y, 10, 1.0, 10.0, 0xffffff00)
 		end
 	end
 end
