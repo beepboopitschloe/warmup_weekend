@@ -15,6 +15,7 @@ module WarmupWeekend
 			@weed = Gosu::Image.new("assets/weed.png")
 			@weed_x = SCREEN_WIDTH
 			@weed_y = SCREEN_HEIGHT
+			@weed_a = 0
 		end
 
 		def update
@@ -43,10 +44,12 @@ module WarmupWeekend
 			else
 				@weed_y = SCREEN_HEIGHT
 			end
+
+			@weed_a += 0.5
 		end
 
 		def draw
-			@weed.draw_rot(@weed_x, @weed_y, 1, 1.0)
+			@weed.draw_rot(@weed_x, @weed_y, 1, @weed_a)
 
 			@font.draw("HELLO ROB ;)", @rob_x, @rob_y, 10, 1.0, 10.0, 0xffffff00)
 		end
