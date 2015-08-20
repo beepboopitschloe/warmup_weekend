@@ -8,6 +8,9 @@ module WarmupWeekend
 
 			@rob_x = 0
 			@rob_y = 0
+
+			@music = Gosu::Sample.new("assets/good_song.mp3")
+			@music.play
 		end
 
 		def update
